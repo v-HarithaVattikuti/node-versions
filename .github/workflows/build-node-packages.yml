@@ -1,12 +1,12 @@
 name: Generate Node.js packages
-run-name: Generate Node.js ${{ inputs.VERSION || '18.12.0' }}
+run-name: Generate Node.js ${{ inputs.VERSION || '20.8.1' }}
 on:
   workflow_dispatch:
     inputs:
       VERSION:
         description: 'Node.js version to build and upload'
         required: true
-        default: '18.12.0'
+        default: '20.8.1'
       PUBLISH_RELEASES:
         description: 'Whether to publish releases'
         required: true
@@ -23,9 +23,9 @@ on:
 jobs:
   node:
     name: Node
-    uses: actions/versions-package-tools/.github/workflows/build-tool-packages.yml@main
+    uses: v-priyagupta108/versions-package-tools/.github/workflows/build-tool-packages.yml@checksum-format
     with:
       tool-name: "node"
-      tool-version: ${{ inputs.VERSION || '18.12.0' }}
+      tool-version: ${{ inputs.VERSION || '20.8.1' }}
       publish-release: ${{ inputs.PUBLISH_RELEASES || false }}
     secrets: inherit
